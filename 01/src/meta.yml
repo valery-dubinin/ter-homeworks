@@ -1,0 +1,20 @@
+#cloud-config
+groups:
+  - docker
+
+users:
+  - name: user
+    groups: sudo, docker
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQgtrYeIGxZ/Cosunu8JlMUH8nBss2cgtUxh/RsjJN/ user@user-VirtualBox
+
+runcmd:
+   - [ curl, -fsSL, "https://get.docker.com", -o, "get-docker.sh" ]
+   - [ sh, "get-docker.sh" ]
+
+# package_update: true
+# package_upgrade: true
+# packages:
+#  - docker
