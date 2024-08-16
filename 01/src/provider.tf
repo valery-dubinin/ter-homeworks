@@ -21,8 +21,8 @@ terraform {
 }
 
 provider "docker" {
-  host     = "ssh://user@89.169.134.111:22"
-  ssh_opts = ["-o", "IdentityFile=/home/user/yandexkey", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
+#  host     = "ssh://user@89.169.140.244:22"
+#  ssh_opts = ["-o", "IdentityFile=/home/user/yandexkey", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
 }
 
 

@@ -1,8 +1,6 @@
+# Пароли:
 
-
-#однострочный комментарий
-
-resource "random_password" "random_string" {
+resource "random_password" "mysql_root_pass" {
   length      = 16
   special     = false
   min_upper   = 1
@@ -10,19 +8,10 @@ resource "random_password" "random_string" {
   min_numeric = 1
 }
 
-
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = true
+resource "random_password" "mysql_pass" {
+  length      = 16
+  special     = false
+  min_upper   = 1
+  min_lower   = 1
+  min_numeric = 1
 }
-
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.image_id
-  name  = "hello_world"
-
-  ports {
-    internal = 80
-    external = 9090
-  }
-}
-
