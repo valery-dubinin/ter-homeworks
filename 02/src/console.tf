@@ -30,3 +30,6 @@ locals {
   }
 }
 
+# 
+#  К 7 заданию. Вот интерполяция:
+# "${local.test_map["admin"]} is admin for prodution server based on OS ${local.servers.production["image"]} with ${local.servers.production["cpu"]} vcpu ${local.servers.production["ram"]} ram and ${length(local.servers.production["disks"])} virtual disks"
