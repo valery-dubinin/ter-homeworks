@@ -28,8 +28,28 @@ locals {
       disks = ["vda", "vdb", "vdc", "vdd"]
     }
   }
-}
-
-# 
+  # 
 #  К 7 заданию. Вот интерполяция:
 # "${local.test_map["admin"]} is admin for prodution server based on OS ${local.servers.production["image"]} with ${local.servers.production["cpu"]} vcpu ${local.servers.production["ram"]} ram and ${length(local.servers.production["disks"])} virtual disks"
+  test = [
+   {
+      "dev1" = [
+       "ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117",
+       "10.0.1.7",
+      ]
+    },
+    {
+      "dev2" = [
+        "ssh -o 'StrictHostKeyChecking=no' ubuntu@84.252.140.88",
+        "10.0.2.29",
+      ]
+    },
+    {
+      "prod1" = [
+        "ssh -o 'StrictHostKeyChecking=no' ubuntu@51.250.2.101",
+        "10.0.1.30",
+      ]
+    },
+  ]
+}
+
