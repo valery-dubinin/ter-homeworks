@@ -92,3 +92,21 @@ variable "vm_db_vpc_name" {
   default     = "db-develop"
   description = "VPC network & subnet name"
 }
+
+variable "env" {
+  type        = string
+  default     = "develop"
+  description = "name of environment"
+}
+
+variable "project_web" {
+  type        = string
+  default     = "web"
+  description = "name of project web"
+}
+
+variable "project_db" {
+  type        = string
+  default     = "db"
+  description = "name of project db"
+}
