@@ -6,11 +6,11 @@ variable vm_web_family {
   description = "family of image"
 }
 
-variable vm_web_name {
-  type = string
-  default = "netology-develop-platform-web"
-  description = "name of vm"
-}
+#variable vm_web_name {
+#  type = string
+#  default = "netology-develop-platform-web"
+#  description = "name of vm"
+#}
 
 variable vm_web_platform_id {
   type = string
@@ -18,23 +18,23 @@ variable vm_web_platform_id {
   description = "platform_id of vm"
 }
 
-variable vm_web_cores {
-  type = string
-  default = 2
-  description = "cores of vm"
-}
+#variable vm_web_cores {
+#  type = string
+#  default = 2
+#  description = "cores of vm"
+#}
 
-variable vm_web_memory {
-  type = string
-  default = 1
-  description = "memory in Gb of vm"
-}
+#variable vm_web_memory {
+#  type = string
+#  default = 1
+#  description = "memory in Gb of vm"
+#}
 
-variable vm_web_core_fraction {
-  type = string
-  default = 5
-  description = "core_fraction in % of vm"
-}
+#variable vm_web_core_fraction {
+#  type = string
+#  default = 5
+#  description = "core_fraction in % of vm"
+#}
 
 variable vm_web_preemptible {
   type = bool
@@ -50,29 +50,29 @@ variable vm_web_nat {
 
 ####
 
-variable vm_db_name {
-  type = string
-  default = "netology-develop-platform-db"
-  description = "name of vm"
-}
+#variable vm_db_name {
+#  type = string
+#  default = "netology-develop-platform-db"
+#  description = "name of vm"
+#}
 
-variable vm_db_cores {
-  type = string
-  default = 2
-  description = "cores of vm"
-}
+#variable vm_db_cores {
+#  type = string
+#  default = 2
+#  description = "cores of vm"
+#}
 
-variable vm_db_memory {
-  type = string
-  default = 2
-  description = "memory in Gb of vm"
-}
+#variable vm_db_memory {
+#  type = string
+#  default = 2
+#  description = "memory in Gb of vm"
+#}
 
-variable vm_db_core_fraction {
-  type = string
-  default = 20
-  description = "core_fraction in % of vm"
-}
+#variable vm_db_core_fraction {
+#  type = string
+#  default = 20
+#  description = "core_fraction in % of vm"
+#}
 
 variable vm_db_zone {
   type = string
@@ -109,4 +109,43 @@ variable "project_db" {
   type        = string
   default     = "db"
   description = "name of project db"
+}
+
+#### К 6 заданию
+
+variable "vms_resources" {
+  type = map(object({
+    cores = number,
+    memory = number,
+    core_fraction = number
+  }))
+  default = {
+    web = {
+      cores = 2,
+      memory = 1,
+      core_fraction = 5
+    }
+    db = {
+      cores = 2,
+      memory = 2,
+      core_fraction = 20
+    }
+  }
+}
+
+variable "metadata" {
+  type = map(object({
+    serial-port-enable = number,
+    ssh-keys = string,
+  }))
+  default = {
+    web = {
+      serial-port-enable = 1
+      ssh-keys = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQgtrYeIGxZ/Cosunu8JlMUH8nBss2cgtUxh/RsjJN/ user@user-VirtualBox"
+    }
+    db = {
+      serial-port-enable = 1
+      ssh-keys = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQgtrYeIGxZ/Cosunu8JlMUH8nBss2cgtUxh/RsjJN/ user@user-VirtualBox"
+    }
+  }
 }
