@@ -30,3 +30,9 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network&subnet name"
 }
+
+##### Образ машин
+
+data "yandex_compute_image" "ubuntu20" {
+  family = "ubuntu-2004-lts"
+}
