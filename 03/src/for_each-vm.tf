@@ -24,7 +24,7 @@ variable "each_vm" {
   ]  
 }
 
-resource "yandex_compute_instance" "foreach-instance" {
+resource "yandex_compute_instance" "foreach_instance" {
   
   for_each = { for vm in var.each_vm : vm.vm_name => vm } 
   # Данное выражение создает нам map из list (которым наша переменная изначально была), причем ключем становится имя машины. 

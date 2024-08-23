@@ -1,5 +1,5 @@
-resource "yandex_compute_instance" "count-instance" {
-  depends_on = [yandex_compute_instance.foreach-instance]
+resource "yandex_compute_instance" "count_instance" {
+  depends_on = [yandex_compute_instance.foreach_instance]
   count       = 2  
   zone        = "ru-central1-a"
   name        = "web-${count.index+1}"
