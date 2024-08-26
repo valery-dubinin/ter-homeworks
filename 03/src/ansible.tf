@@ -3,7 +3,7 @@ resource "local_file" "hosts_templatefile" {
 
   { webservers = yandex_compute_instance.count_instance,
     databases = yandex_compute_instance.foreach_instance
-    storage = yandex_compute_instance.storage
+    storage = [ yandex_compute_instance.storage ]
   })
 
   filename = "${abspath(path.module)}/hosts.ini"

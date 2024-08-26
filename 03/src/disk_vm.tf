@@ -18,14 +18,14 @@ resource "yandex_compute_instance" "storage" {
   platform_id = "standard-v2"
   
   resources {
-    cores  = 2
-    memory = 1
-    core_fraction = 5
+    cores  = var.vms_resources.storage.cores
+    memory = var.vms_resources.storage.memory
+    core_fraction = var.vms_resources.storage.core_fraction
   }
 
   boot_disk {
     initialize_params {
-      size = 10
+      size = var.vms_resources.storage.disk_size
       image_id = data.yandex_compute_image.ubuntu20.id
       type = "network-hdd"
     }

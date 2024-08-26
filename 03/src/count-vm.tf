@@ -7,14 +7,14 @@ resource "yandex_compute_instance" "count_instance" {
   platform_id = "standard-v2"
   
   resources {
-    cores  = 2
-    memory = 1
-    core_fraction = 5
+    cores  = var.vms_resources.web.cores
+    memory = var.vms_resources.web.memory
+    core_fraction = var.vms_resources.web.core_fraction
   }
 
   boot_disk {
     initialize_params {
-      size = 10
+      size = var.vms_resources.web.disk_size
       image_id = data.yandex_compute_image.ubuntu20.id
       type = "network-hdd"
     }
