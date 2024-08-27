@@ -23,9 +23,9 @@ module "marketing-vm" {
   depends_on = [local_file.cloudinit_templ]  
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name       = "marketing" 
-  network_id     = yandex_vpc_network.develop.id
-  subnet_zones   = ["ru-central1-a","ru-central1-b"]
-  subnet_ids     = [yandex_vpc_subnet.develop_a.id,yandex_vpc_subnet.develop_b.id]
+  network_id     = module.vpc_dev.net_id
+  subnet_zones   = ["ru-central1-a"]
+  subnet_ids     = [ module.vpc_dev.subnet_id ]
   instance_name  = "webs"
   instance_count = 1
   image_family   = "ubuntu-2004-lts"
@@ -47,9 +47,9 @@ module "analitics-vm" {
   depends_on = [local_file.cloudinit_templ]   
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name       = "analitics"
-  network_id     = yandex_vpc_network.develop.id
+  network_id     = module.vpc_dev.net_id
   subnet_zones   = ["ru-central1-a"]
-  subnet_ids     = [yandex_vpc_subnet.develop_a.id]
+  subnet_ids     = [ module.vpc_dev.subnet_id ]
   instance_name  = "web-stage"
   instance_count = 1
   image_family   = "ubuntu-2004-lts"
